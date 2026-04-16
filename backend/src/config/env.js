@@ -6,12 +6,16 @@ const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..', '..');
 
 function resolveDbPath() {
-  if (process.env.DB_PATH) {
-    return process.env.DB_PATH;
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  // 本番は強制的に /var/data を使う（←重要）
+  if (isProduction) {
+    return '/var/data/shift.db';
   }
 
-  if (process.env.NODE_ENV === 'production') {
-    return '/var/data/shift.db';
+  // ローカルだけカスタム許可
+  if (process.env.DB_PATH) {
+    return process.env.DB_PATH;
   }
 
   return path.join(projectRoot, 'data', 'shift.db');
