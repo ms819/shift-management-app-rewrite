@@ -8,12 +8,10 @@ const projectRoot = path.resolve(__dirname, '..', '..');
 function resolveDbPath() {
   const isProduction = process.env.NODE_ENV === 'production';
 
-  // 本番は強制的に /var/data を使う（←重要）
   if (isProduction) {
     return '/var/data/shift.db';
   }
 
-  // ローカルだけカスタム許可
   if (process.env.DB_PATH) {
     return process.env.DB_PATH;
   }

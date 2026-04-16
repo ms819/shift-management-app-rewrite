@@ -8,8 +8,7 @@ const schemaPath = path.resolve(process.cwd(), 'schema.sql');
 function ensureDirectoryForFile(filePath) {
   const directory = path.dirname(filePath);
 
-  // Render の Persistent Disk のマウント先は自分で mkdir しない
-  if (directory === '/var/data') {
+  if (directory.startsWith('/var/data')) {
     return;
   }
 
