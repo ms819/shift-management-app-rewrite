@@ -7,7 +7,15 @@ const schemaPath = path.resolve(process.cwd(), 'schema.sql');
 
 function ensureDirectoryForFile(filePath) {
   const directory = path.dirname(filePath);
-  fs.mkdirSync(directory, { recursive: true });
+
+  // Render の Persistent Disk のマウント先は自分で mkdir しない
+  if (directory === '/var/data') {
+    return;
+  }
+
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory, { recursive: true });
+  }
 }
 
 ensureDirectoryForFile(env.dbPath);
