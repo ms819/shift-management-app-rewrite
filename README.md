@@ -48,3 +48,16 @@ npm run dev
 - Build Command: `npm install && npm run build`
 - Publish Directory: `dist`
 - Environment Variable: `VITE_API_BASE_URL=https://your-backend.onrender.com`
+
+## 公開URL
+https://shift-management-app-rewrite-1.onrender.com
+
+## 概要
+シフト登録・一覧表示・給与計算ができるWebアプリです。
+
+## 使用技術
+- React
+- Vite
+- Express
+- SQLite
+- Render
